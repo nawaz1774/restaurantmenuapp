@@ -1,0 +1,27 @@
+{% include 'header.html' %}
+
+	<div class = "row"><h1 class="text-center">Add a new Restaurant</h1></div>
+	<div class = "row"><hr></div>
+	<a href="{{ url_for('listOfRes') }}" class="btn btn-default">Restaurant List</a>
+	<div class = "row"><hr></div>
+
+	<div>
+		<form method = "POST", action = "{{ url_for('addNewRes') }}">
+			<div class="form-group">
+				<label for = "resname">Restaurant Name:</label>
+				<input class="form-control" type = "text" name = "resname" id = "resname">
+			</div>
+			<div class="form-group">
+				<label for = "cusname">Cuisine:</label>
+				<input class="form-control" type = "text" name = "cusname" id = "cusname">
+			</div>
+			<div class="form-group">
+				<label for = "desc">Description:</label>
+				<textarea id = "desc" name = "desc" class="form-control" rows="3"></textarea>
+			</div>
+			<input class="btn btn-primary" type = "submit", value = "CREATE">
+		</form>
+	</div>
+
+</div>
+</html>

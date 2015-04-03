@@ -1,0 +1,38 @@
+{% include 'header.html' %}
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+<ul>
+	{% for message in messages %}
+	<li><strong>{{message}}</strong></li>
+	{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+	<div class = "row"><h1 class="text-center">List Of Menu Items</h1></div>
+	<div class = "row"><hr></div>
+	<a href="{{ url_for('listOfRes') }}" class="btn btn-default">Restaurant List</a>
+	<div class = "row"><hr></div>
+
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Course</th>
+			<th>Description</th>
+			<th></th>
+			<th></th>
+		</tr>
+		{% for item in items %}
+		<tr>
+			<td>{{ item[1] }}</td>
+			<td>{{ item[2] }}</td>
+			<td>{{ item[3] }}</td>
+			<td><a class="btn btn-default" href="#">EDIT</a></td>
+			<td><a class="btn btn-default" href="#">DELETE</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	<a class = "btn btn-primary btn-lg btn-block" href="{{ url_for('addMenuItem', res_id = res_id ) }}">Add Menu Item</a>
+
+	
+</body>
+</html>
