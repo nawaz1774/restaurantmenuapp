@@ -23,6 +23,22 @@ class Restaurant():
 		self.cuisine = cuisine
 		self.description = description
 
+def get_res_name_with_id(res_id):
+	"""This function returns the name of the Restaurant.
+
+	Args:
+		res_id: An integer which is a restaurant id that needs to be deleted.
+
+	Returns:
+		Returns a string that contain the restaurant name.
+
+	"""
+	params = (res_id,)
+	q = "select restaurant_id, name, cuisine, description from restaurant where restaurant_id = %s"
+	result = dc.selectOP(q, params)
+	res_name = result[0][1]
+
+	return res_name
 
 def get_list_of_res(cnt):
 	"""This function returns a List of Restaurants.
@@ -59,7 +75,27 @@ def add_res(res):
 	else:
 		return 0
 
+def delete_res(res_id):
+	"""This function deletes a Restaurant from the database.
 
+	Args:
+		res_id: An integer which is a restaurant id that needs to be deleted.
+
+	Returns:
+		Returns a the operation outcome 1 - Success, 0 - Failure
+
+	"""
+	params = (res_id,)
+	q1 = "DELETE FROM menuitem WHERE restaurant_id = %s"
+	q = "DELETE FROM restaurant WHERE restaurant_id = %s"
+
+	result1 = dc.deleteOP(q1, params)
+	result = dc.deleteOP(q, params)
+	print(result)
+	if result == 1 and result1 == 1:
+		return 1
+	else:
+		return 0
 
 
 

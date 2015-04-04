@@ -48,7 +48,7 @@ def selectOP(q, params):
 		params: A Tuple containing the query parameters.
 
 	Returns:
-		Returns a the result set as List of Tupeles
+		Returns a the result set as List of Tuples
 
 	"""
 	try:
@@ -56,8 +56,32 @@ def selectOP(q, params):
 		cursor = conn.cursor()
 		cursor.execute(q, params)
 		resultset = cursor.fetchall()
+		conn.close()
 
 		return resultset
 	except:
 		return 0
 
+
+def deleteOP(q, params):
+	"""This function performs a DELETE operation with query provided.
+
+	Args:
+		q: A String that is an DELETE query that needs to be executed.
+		params: A Tuple containing the query parameters.
+
+	Returns:
+		Returns a the operation outcome 1 - Success, 0 - Failure
+
+	"""
+	try:
+		conn = connect()
+		cursor = conn.cursor()
+		cursor.execute(q, params)
+		conn.commit()
+		conn.close()
+
+		return 1
+	except Exception as ins:
+		print(ins)
+		return 0

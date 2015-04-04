@@ -3,7 +3,7 @@
 	<div class = "row"><h1 class="text-center">Add a new Menu Item</h1></div>
 	<div class = "row"><hr></div>
 	<a href="{{ url_for('listOfRes') }}" class="btn btn-default">Restaurant List</a>
-	<a href="#" class="btn btn-default">Menu List</a>
+	<a href="{{ url_for('menuItemsoFRes', res_id = res_id) }}" class="btn btn-default">Menu List</a>
 	<div class = "row"><hr></div>
 
 	<div>

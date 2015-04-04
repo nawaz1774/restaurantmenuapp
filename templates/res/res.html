@@ -27,7 +27,7 @@
 			<td>{{ res[2] }}</td>
 			<td>{{ res[3] }}</td>
 			<td><a class="btn btn-default" href="#">EDIT</a></td>
-			<td><a class="btn btn-default" href="#">DELETE</a></td>
+			<td><a class="btn btn-default" href="{{ url_for('deleteRes', res_id = res[0]) }}">DELETE</a></td>
 		</tr>
 		{% endfor %}
 	</table>

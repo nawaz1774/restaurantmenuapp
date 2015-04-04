@@ -95,8 +95,18 @@ def deleteRes(res_id):
 		Returns a HTML Template.
 
 	"""
-
-	return "A form for delete a Restaurant"
+	res_name = ResMod.get_res_name_with_id(res_id)
+	if request.method == "POST":
+		result = ResMod.delete_res(res_id)
+		if result == 1:
+			flash(res_name + " has been removed!")
+			return redirect(url_for('listOfRes'))
+		else:
+			flash(res_name + " could not be has been removed!")
+			return redirect(url_for('listOfRes'))
+	else:
+		pgtitle = "Delete a Restaurant"
+		return render_template('res/delete_res.html', pgtitle = pgtitle, res_id = res_id, res_name = res_name)
 
 @app.route('/res/<int:res_id>/menu/add/', methods = ['GET', 'POST'])
 def addMenuItem(res_id):

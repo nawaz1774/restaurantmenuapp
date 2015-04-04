@@ -1,0 +1,16 @@
+{% include 'header.html' %}
+	<div class = "row"><h1 class="text-center">Delete a new Restaurant</h1></div>
+	<div class = "row"><hr></div>
+	<a href="{{ url_for('listOfRes') }}" class="btn btn-default">Restaurant List</a>
+	<div class = "row"><hr></div>
+
+	<div class = "row">
+		<p class = "col-md-12">Are you sure you want to remove {{ res_name }}?</p>
+		<form method = "POST", action = "{{ url_for('deleteRes', res_id = res_id) }}">
+			<button class = "col-md-2 btn btn-default">YES</button>
+		</form>
+		<a class = "col-md-2 btn btn-default" href="{{ url_for('listOfRes') }}">NO</a>
+	</div>
+
+</div>
+</html>
